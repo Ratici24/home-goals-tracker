@@ -1,0 +1,23 @@
+{
+  "name": "home-goals-tracker",
+  "version": "1.0.0",
+  "description": "A personal tracker for household and everyday goals.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ratici24/home-goals-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ratici24/home-goals-tracker/issues"
+  },
+  "homepage": "https://github.com/Ratici24/home-goals-tracker#readme"
+}
