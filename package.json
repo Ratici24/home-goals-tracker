@@ -10,7 +10,8 @@
     "format": "prettier . --write",
     "lint": "eslint .",
     "test": "node -e \"console.log('test stub: ok')\"",
-    "build": "node -e \"console.log('build stub: ok')\""
+    "build": "node -e \"console.log('build stub: ok')\"",
+    "dev:api": "ts-node-dev --respawn --transpile-only apps/api/src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -25,12 +26,18 @@
   "homepage": "https://github.com/Ratici24/home-goals-tracker#readme",
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.2",
+    "@types/uuid": "^10.0.0",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
+    "prisma": "^5.22.0",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.49.0"
+    "typescript-eslint": "^8.49.0",
+    "uuid": "^13.0.0"
   },
   "lint-staged": {
     "*.{js,ts,json,md}": [
@@ -39,5 +46,9 @@
     "*.{js,ts}": [
       "eslint"
     ]
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "express": "^5.2.1"
   }
 }

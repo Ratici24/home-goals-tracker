@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Goal {
+  id        String   @id
+  title     String
+  priority  Int
+  status    String
+  createdAt DateTime
+  steps     Step[]
+}
+
+model Step {
+  id        String   @id
+  goalId    String
+  title     String
+  done      Boolean
+  createdAt DateTime
+  goal      Goal     @relation(fields: [goalId], references: [id])
+}
