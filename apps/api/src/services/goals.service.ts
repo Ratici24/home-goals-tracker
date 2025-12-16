@@ -22,3 +22,19 @@ export function createGoal(input: {
 export function listGoals(): Goal[] {
   return memoryRepository.getGoals();
 }
+
+export function listGoalsWithProgress() {
+  return memoryRepository.getGoals().map((goal) => {
+    const steps = memoryRepository.getStepsByGoal(goal.id);
+    const done = steps.filter((s) => s.done).length;
+
+    return {
+      ...goal,
+      progress: {
+        done,
+        total: steps.length,
+        ratio: steps.length ? done / steps.length : 0,
+      },
+    };
+  });
+}
