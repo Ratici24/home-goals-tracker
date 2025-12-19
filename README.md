@@ -1,47 +1,133 @@
-# Home Goals Tracker
+Home Goals Tracker
 
-A personal tracker for household and everyday goals.
+Backend API for tracking personal goals and their progress.
 
-## Problem
+The project was developed as part of a laboratory course and demonstrates
+basic backend architecture, REST API design, testing, and CI.
 
-Household goals are often long-term and consist of multiple small steps.
-Without a clear progress overview, it is easy to lose motivation or forget unfinished tasks.
+==================================================
 
-## Solution
+Tech stack
 
-Home Goals Tracker helps users break down goals into steps, track progress,
-and analyze completion over time.
+- Node.js
+- TypeScript
+- Express
+- Prisma ORM
+- SQLite
+- Jest
+- GitHub Actions
 
-## MVP (Laboratory work #3)
+==================================================
 
-- Create, update and archive goals
-- Add steps (subtasks) to goals
-- Track goal progress based on completed steps
-- List and filter goals by status and priority
+Project structure
 
-## Key user scenarios
+apps/api/src
 
-1. Create a goal → add steps → mark steps as completed → observe progress
-2. View all active goals and filter them
-3. Archive completed or irrelevant goals
+- app.ts Express app configuration
+- index.ts API entrypoint
+- routes HTTP route handlers
+- services Business logic layer
+- repositories Data access layer
+- models Domain models
 
-## Technology stack
+docs
 
-- Node.js + TypeScript
-- NestJS — modular architecture and dependency injection
-- PostgreSQL + Prisma — relational data model and migrations
-- Jest / Supertest / Playwright — unit, integration and E2E testing
-- GitHub Actions — CI/CD
-- Husky + lint-staged + Conventional Commits — code quality and commit discipline
+- architecture Architecture diagrams and decisions
+- requirements Lab requirements
+- performance Performance and load testing reports
 
-## Repository structure
+==================================================
 
-- `apps/api` — backend API
-- `docs/requirements` — laboratory requirements
-- `docs/architecture` — architecture decisions and diagrams
-- `docs/runbooks` — deployment, debugging and performance notes
+API endpoints
 
-## Development status
+Health check
 
-The project is developed incrementally as part of the Node.js mentoring course,
-following
+GET /health
+
+Response:
+{
+"status": "ok"
+}
+
+---
+
+Goals
+
+GET /goals
+Returns a list of all goals.
+
+POST /goals
+Creates a new goal.
+
+Request body example:
+{
+"title": "Learn Node.js",
+"priority": 4
+}
+
+Response example:
+{
+"id": "uuid",
+"title": "Learn Node.js",
+"priority": 4,
+"status": "active",
+"createdAt": "2025-12-16T22:43:28.187Z"
+}
+
+==================================================
+
+Development
+
+Install dependencies:
+npm install
+
+Start API in development mode:
+npm run dev:api
+
+Run tests:
+npm test
+
+Run lint:
+npm run lint
+
+==================================================
+
+Database
+
+The project uses Prisma ORM with SQLite.
+
+To apply migrations:
+npx prisma migrate dev
+
+==================================================
+
+Testing
+
+- Unit tests for services
+- End-to-end test for health endpoint
+- Tests are executed automatically in CI pipeline
+
+==================================================
+
+CI / CD
+
+The project uses GitHub Actions to automatically:
+
+- install dependencies
+- run lint
+- run tests
+- check build
+
+==================================================
+
+Notes
+
+The project was gradually extended during multiple laboratory works:
+
+- basic tooling and formatting
+- API prototype
+- database integration
+- testing
+- CI pipeline
+- performance testing
+- final project polishing
