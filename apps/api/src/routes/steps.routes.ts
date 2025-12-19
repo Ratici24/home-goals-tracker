@@ -1,15 +1,10 @@
 import { Router } from 'express';
-import { createStep, toggleStep } from '../services/steps.service';
+import { toggleStep } from '../services/steps.service';
 
 export const stepsRouter = Router();
 
-stepsRouter.post('/:goalId', (req, res) => {
-  const step = createStep(req.params.goalId, req.body.title);
-  res.status(201).json(step);
-});
-
-stepsRouter.patch('/:id', (req, res) => {
-  const step = toggleStep(req.params.id, req.body.done);
-  if (!step) return res.sendStatus(404);
-  res.json(step);
+stepsRouter.patch('/:id', async (req, res) => {
+  const result = await toggleStep(req.params.id, req.body ?? {});
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  res.status(result.status).json(result.data);
 });
